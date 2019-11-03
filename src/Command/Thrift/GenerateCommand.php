@@ -1,5 +1,15 @@
 <?php
 
+/**
+ * Rangine thrift rpc server
+ *
+ * (c) We7Team 2019 <https://www.rangine.com>
+ *
+ * document http://s.w7.cc/index.php?c=wiki&do=view&id=317&list=2284
+ *
+ * visited https://www.rangine.com for more details
+ */
+
 namespace W7\ThriftRpc\Command\Thrift;
 
 use Symfony\Component\Console\Input\InputOption;
@@ -8,15 +18,12 @@ use Symfony\Component\Finder\SplFileInfo;
 use W7\Console\Command\CommandAbstract;
 use W7\Core\Exception\CommandException;
 
-class GenerateCommand extends CommandAbstract
-{
-	protected function configure()
-	{
+class GenerateCommand extends CommandAbstract {
+	protected function configure() {
 		$this->addOption('--name', null, InputOption::VALUE_OPTIONAL, 'thrift file name');
 	}
 
-	protected function handle($options)
-	{
+	protected function handle($options) {
 		if (empty($options['name'])) {
 			throw new CommandException('option name error');
 		}
@@ -56,8 +63,7 @@ class GenerateCommand extends CommandAbstract
 		$this->makeHandler($options['name'], $path);
 	}
 
-	private function makeHandler($name, $path)
-	{
+	private function makeHandler($name, $path) {
 		//生成handler
 		$nameInfo = explode('/', $name);
 		$namespace = str_replace('/', '\\', $path);

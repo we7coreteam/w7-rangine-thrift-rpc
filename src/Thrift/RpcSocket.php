@@ -1,5 +1,15 @@
 <?php
 
+/**
+ * Rangine thrift rpc server
+ *
+ * (c) We7Team 2019 <https://www.rangine.com>
+ *
+ * document http://s.w7.cc/index.php?c=wiki&do=view&id=317&list=2284
+ *
+ * visited https://www.rangine.com for more details
+ */
+
 namespace W7\ThriftRpc\Thrift;
 
 use Thrift;
@@ -19,7 +29,7 @@ class RpcSocket extends TFramedTransport {
 		$this->fd = $fd;
 	}
 
-	function readFrame() {
+	public function readFrame() {
 		$buf = $this->_read(4);
 		$val = unpack('N', $buf);
 		$sz = $val[1];
@@ -61,7 +71,7 @@ class RpcSocket extends TFramedTransport {
 		$this->wBuf_ .= $buf;
 	}
 
-	function flush() {
+	public function flush() {
 		$out = pack('N', strlen($this->wBuf_));
 		$out .= $this->wBuf_;
 		$this->server->send($this->fd, $out);
