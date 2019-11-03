@@ -1,0 +1,31 @@
+{
+	"name": "w7/rangine-thrift-rpc",
+	"description": "rangine thrift rpc",
+	"type": "library",
+	"keywords": [
+		"rangine",
+		"rpc",
+		"thrift"
+	],
+	"license": "Apache-2.0",
+	"require": {
+		"php": ">=7.1.0",
+		"packaged/thrift": "^0.11.0"
+	},
+	"require-dev": {
+		"w7/rangine": "~2.0",
+		"w7/php-cs-fixer": "^1.0"
+	},
+	"autoload": {
+		"psr-4": {
+			"W7\\ThriftRpc\\": "src/"
+		}
+	},
+	"extra": {
+		"rangine": {
+			"providers": [
+				"W7\\ThriftRpc\\ServiceProvider"
+			]
+		}
+	}
+}
