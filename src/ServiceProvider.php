@@ -28,6 +28,10 @@ class ServiceProvider extends ProviderAbstract {
 	 * @return void
 	 */
 	public function register() {
+		$this->registerOpenBaseDir([
+			BASE_PATH . '/thrift',
+			BASE_PATH . '/gen-php'
+		]);
 		$this->registerLog();
 		$this->registerCommand();
 
