@@ -69,6 +69,7 @@ class GenerateCommand extends CommandAbstract {
 		$namespace = str_replace('/', '\\', $path);
 		$className = end($nameInfo);
 		$interfaceName = $className . 'If';
+		$className .= 'Handler';
 		reset($nameInfo);
 
 		$content = <<<EOF
@@ -80,7 +81,7 @@ class $className implements $interfaceName {
 
 }
 EOF;
-		file_put_contents(APP_PATH . '/ThriftRpc/' . $path . '/' . $className . 'Handler.php', $content);
+		file_put_contents(APP_PATH . '/ThriftRpc/' . $path . '/' . $className . '.php', $content);
 		$this->output->success('generate thrift ' . $name . 'handler success');
 	}
 }
