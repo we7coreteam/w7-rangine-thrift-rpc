@@ -28,10 +28,7 @@ class ServiceProvider extends ProviderAbstract {
 	 * @return void
 	 */
 	public function register() {
-		$this->registerOpenBaseDir([
-			BASE_PATH . '/thrift',
-			BASE_PATH . '/gen-php'
-		]);
+		$this->addOpenBaseDir();
 		$this->registerLog();
 		$this->registerCommand();
 
@@ -45,6 +42,16 @@ class ServiceProvider extends ProviderAbstract {
 		$events[SwooleEvent::ON_CONNECT] = ConnectListener::class;
 		$events[SwooleEvent::ON_CLOSE] = CloseListener::class;
 		$this->registerServerEvent('thrift-rpc', $events);
+	}
+
+	private function addOpenBaseDir() {
+		if (!is_dir(BASE_PATH . '/thrift')) {
+			mkdir(BASE_PATH . '/thrift');
+		}
+		$this->registerOpenBaseDir([
+			BASE_PATH . '/thrift',
+			BASE_PATH . '/gen-php'
+		]);
 	}
 
 	private function registerLog() {
