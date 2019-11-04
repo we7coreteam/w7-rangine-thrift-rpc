@@ -31,7 +31,7 @@ class ServiceProvider extends ProviderAbstract {
 		$this->registerLog();
 		$this->registerCommand();
 
-		ServerEnum::registerServer('thrift-rpc', Server::class);
+		$this->registerServer('thrift-rpc', Server::class);
 		/**
 		 * @var SwooleEvent $event
 		 */
@@ -40,7 +40,7 @@ class ServiceProvider extends ProviderAbstract {
 		$events[SwooleEvent::ON_RECEIVE] = ReceiveListener::class;
 		$events[SwooleEvent::ON_CONNECT] = ConnectListener::class;
 		$events[SwooleEvent::ON_CLOSE] = CloseListener::class;
-		$event->addServerEvents('thrift-rpc', $events);
+		$this->registerServerEvent('thrift-rpc', $events);
 	}
 
 	private function registerLog() {
