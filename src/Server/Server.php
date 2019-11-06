@@ -13,7 +13,7 @@
 namespace W7\ThriftRpc\Server;
 
 use Swoole\Server as RpcServer;
-use W7\Core\Server\ServerAbstract;
+use W7\Tcp\Server\Server as ServerAbstract;
 use W7\Core\Server\SwooleEvent;
 
 class Server extends ServerAbstract {
@@ -60,12 +60,5 @@ class Server extends ServerAbstract {
 			$object = \iloader()->get($class);
 			$tcpServer->on($eventName, [$object, 'run']);
 		}
-	}
-
-	protected function getDefaultSetting(): array {
-		$setting = parent::getDefaultSetting();
-		$setting['dispatch_mode'] = 2;
-
-		return $setting;
 	}
 }
