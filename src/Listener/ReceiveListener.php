@@ -48,13 +48,13 @@ class ReceiveListener extends ListenerAbstract {
 		$psr7Request = new Request('POST', '', [], $data);
 		$psr7Response = new Response();
 
-		ievent(SwooleEvent::ON_USER_BEFORE_REQUEST, [$psr7Request, $psr7Response]);
+		//ievent(SwooleEvent::ON_USER_BEFORE_REQUEST, [$psr7Request, $psr7Response]);
 		/**
 		 * @var Dispatcher $dispatcher
 		 */
 		$dispatcher = \iloader()->get(Dispatcher::class);
 		$dispatcher->dispatch($server, $fd, $data, $psr7Request, $psr7Response);
 
-		ievent(SwooleEvent::ON_USER_AFTER_REQUEST);
+		//ievent(SwooleEvent::ON_USER_AFTER_REQUEST);
 	}
 }
