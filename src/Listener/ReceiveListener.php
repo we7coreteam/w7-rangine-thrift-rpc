@@ -56,5 +56,6 @@ class ReceiveListener extends ListenerAbstract {
 		$dispatcher->dispatch($server, $fd, $data, $psr7Request, $psr7Response);
 
 		//ievent(SwooleEvent::ON_USER_AFTER_REQUEST);
+		icontext()->destroy();
 	}
 }
