@@ -29,6 +29,7 @@ class GenerateCommand extends CommandAbstract {
 		}
 
 		$templateDir = BASE_PATH . '/thrift/';
+		$options['name'] = ucfirst($options['name']);
 		if (!file_exists($templateDir . $options['name'] . '.thrift')) {
 			throw new CommandException('thrift ' . $options['name'] . ' not exists');
 		}
