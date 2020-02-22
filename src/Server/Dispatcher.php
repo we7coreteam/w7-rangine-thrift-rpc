@@ -10,7 +10,7 @@
  * visited https://www.rangine.com for more details
  */
 
-namespace W7\ThriftRpc\Thrift;
+namespace W7\ThriftRpc\Server;
 
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\Finder\SplFileInfo;
@@ -22,6 +22,7 @@ use W7\Core\Dispatcher\RequestDispatcher;
 use W7\Core\Exception\HandlerExceptions;
 use W7\Http\Message\Server\Request;
 use W7\Http\Message\Server\Response;
+use W7\ThriftRpc\Thrift\RpcSocket;
 
 class Dispatcher extends RequestDispatcher {
 	/**

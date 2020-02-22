@@ -20,6 +20,7 @@ use W7\ThriftRpc\Listener\CloseListener;
 use W7\ThriftRpc\Listener\ConnectListener;
 use W7\ThriftRpc\Listener\ReceiveListener;
 use W7\ThriftRpc\Server\Server;
+use W7\ThriftRpc\Session\Provider\SessionProvider;
 
 class ServiceProvider extends ProviderAbstract {
 	/**
@@ -31,6 +32,7 @@ class ServiceProvider extends ProviderAbstract {
 		$this->addOpenBaseDir();
 		$this->registerLog();
 		$this->registerCommand();
+		$this->registerProvider(SessionProvider::class);
 
 		$this->registerServer('thrift-rpc', Server::class);
 		/**
