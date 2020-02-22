@@ -69,7 +69,7 @@ class GenerateCommand extends CommandAbstract {
 		$nameInfo = explode('/', $name);
 		$namespace = str_replace('/', '\\', $path);
 		$className = end($nameInfo);
-		$interfaceName = $className . 'If';
+		$interfaceName = $className . 'ServiceIf';
 		$className .= 'Handler';
 		reset($nameInfo);
 
