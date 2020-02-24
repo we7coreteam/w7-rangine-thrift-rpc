@@ -18,7 +18,7 @@ use W7\Core\Server\SwooleEvent;
 
 class Server extends ServerAbstract {
 	public function getType() {
-		return 'thrift-rpc';
+		return 'thriftRpc';
 	}
 
 	public function start() {
